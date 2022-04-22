@@ -23,7 +23,15 @@
     .feld:hover {
         background-color: rgba(255, 255, 255, 0.418);
     }
-    
+    .PlayerX {
+    color: blue;
+    }
+    .PlayerY {
+    color: rot;
+    }
+
+
+
     .container {
         margin: 1 auto;
         display: grid;
@@ -99,7 +107,9 @@
                 h1.innerText = "Click the tiles below to play"
                 Game = ["", "", "", "", "", "", "", "", ""];
                 feld.forEach(feld => {
-                    feld.innerText=""
+                    feld.innerText="";
+                    tile.classList.remove('playerX');
+                    tile.classList.remove('playerO');
                 });
                 console.log("reset!")
             }
@@ -138,6 +148,7 @@
                 }
                 if (!möglich(index)) {return;} 
                 else Game[index] = Player
+                tile.classList.add(`player${currentPlayer}`);
                 show_change(tile);
                 win();
                 next_player();
