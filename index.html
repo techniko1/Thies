@@ -87,14 +87,13 @@
             function show_change(tile) {
                 tile.innerText = Player;
             }
-            cmd ={
-                RenderAll: function () {
-                    feld.forEach((feld, index) => {
-                        feld.innerText=Game[index]
-                    }); 
-                }
+
+            function RenderAll() {
+                feld.forEach((feld, index) => {
+                    feld.innerText=Game[index]
+                }); 
             }
-                
+
             const reset =() => {
                 Player = "X";
                 h1.innerText = "Click the tiles below to play"
