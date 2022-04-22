@@ -74,9 +74,9 @@
             }
 
             const reset =() => {
-                let Player = "X";
+                Player = "X";
                 Game = ["", "", "", "", "", "", "", "", ""];
-                feld.forEach(tile => {show_change(tile);})
+                globalThis.feld.forEach(tile => {show_change(tile);});
             }
 
             function win() {
