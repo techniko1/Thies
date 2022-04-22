@@ -79,7 +79,7 @@
                 feld.forEach(feld => {
                     feld.innerText=""
                 });
-                isAktiv=true;
+                console.log("reset!")
             }
 
             function win() {
@@ -108,8 +108,9 @@
 
             function änder_Feld(tile, index) {
                 if (!möglich(index)) {return;} 
-                else if (!isAktiv) {
+                else if (isAktiv==false) {
                     reset();
+                    isAktiv=true;
                     return;}
                 else Game[index] = Player
                 show_change(tile);
