@@ -26,7 +26,7 @@
     .playerX {
     color: blue;
     }
-    .playerY {
+    .playerO {
     color: rot;
     }
 
@@ -108,8 +108,8 @@
                 Game = ["", "", "", "", "", "", "", "", ""];
                 feld.forEach(feld => {
                     feld.innerText="";
-                    tile.classList.remove('playerX');
-                    tile.classList.remove('playerO');
+                    tile.classList.remove("playerX");
+                    tile.classList.remove("playerO");
                 });
                 console.log("reset!")
             }
@@ -148,7 +148,7 @@
                 }
                 if (!möglich(index)) {return;} 
                 else Game[index] = Player
-                tile.classList.add(`player${currentPlayer}`);
+                tile.classList.add("player${currentPlayer}");
                 show_change(tile);
                 win();
                 next_player();
