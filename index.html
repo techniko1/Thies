@@ -149,8 +149,7 @@
                 if (!möglich(index)) {return;} 
                 else Game[index] = Player;
                 let x = "player"+Player;
-                h1.innerText = String(x);
-                tile.classList.add(x);
+                tile.classList.add(String(x));
                 show_change(tile);
                 win();
                 next_player();
