@@ -58,7 +58,7 @@
                 [0, 4, 8],
                 [2, 4, 6]
             ];
-            isAktiv=true;
+            var isAktiv=true;
 
             function möglich(index) {
                 if (Game[index] != "") {
@@ -74,9 +74,13 @@
             }
 
             const reset =() => {
+                const feld = Array.from(document.querySelectorAll('.feld'));
                 Player = "X";
                 Game = ["", "", "", "", "", "", "", "", ""];
-                globalThis.feld.forEach(tile => {show_change(tile);});
+                feld.forEach(feld => {
+                    show_change(feld);
+                });
+                isAktiv=true;
             }
 
             function win() {
