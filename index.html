@@ -79,7 +79,6 @@
             }
 
             function win() {
-                let winner;
                 let Won = false;
                 for (let i = 0; i <= win_condicones.length - 1; i++) {
                     const a = Game[win_condicones[i][0]];
@@ -90,14 +89,12 @@
                     }
                     if (a === b && b === c) {
                         Won = true;
-                        winner = a;
                         break;
-                        console.log(winner,a,b,c)
                     }
                 }
                 
                 if (Won) {
-                    document.getElementById("h1").innerHTML ="Spieler "+ winner + " hat das Spiel Gewonnen";
+                    document.getElementById("h1").innerHTML ="Spieler "+ Player + " hat das Spiel Gewonnen";
                 } else if (!"" in Game) {
                     document.getElementById("h1").innerHTML = "Unentschieden";
                     reset()
@@ -108,9 +105,9 @@
                 if (!möglich(index)) {
                     return
                 } else Game[index] = Player
-                next_player();
                 show_change(tile);
                 win();
+                next_player();
             }
             feld.forEach((tile, index) => tile.addEventListener('click', () => änder_Feld(tile, index)))
         })
