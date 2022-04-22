@@ -74,7 +74,6 @@
             }
 
             const reset =() => {
-                const feld = Array.from(document.querySelectorAll('.feld'));
                 Player = "X";
                 Game = ["", "", "", "", "", "", "", "", ""];
                 feld.forEach(feld => {
@@ -109,8 +108,7 @@
 
             function änder_Feld(tile, index) {
                 if (!möglich(index)) {return;} 
-                else if (!globalThis.isAktiv) {
-
+                else if (!isAktiv) {
                     reset();
                     return;}
                 else Game[index] = Player
