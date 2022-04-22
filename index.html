@@ -122,9 +122,9 @@
                 
                 if (Won) {
                     document.getElementById("h1").innerHTML ="Spieler "+ Player + " hat das Spiel Gewonnen";
-                } else if (!"" in Game) {
+                } else if (!Game.includes("")) {
                     document.getElementById("h1").innerHTML = "Unentschieden";
-                    reset()
+                    isAktiv=false;
                 }
             }
 
