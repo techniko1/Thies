@@ -58,6 +58,7 @@
                 [0, 4, 8],
                 [2, 4, 6]
             ];
+            isAktiv=true;
 
             function möglich(index) {
                 if (Game[index] != "") {
@@ -89,6 +90,7 @@
                     }
                     if (a === b && b === c) {
                         Won = true;
+                        isAktiv = false;
                         break;
                     }
                 }
@@ -102,9 +104,9 @@
             }
 
             function änder_Feld(tile, index) {
-                if (!möglich(index)) {
-                    return
-                } else Game[index] = Player
+                if (!möglich(index)) {return;} 
+                else if (!isAktiv) {reset();return;}
+                else Game[index] = Player
                 show_change(tile);
                 win();
                 next_player();
