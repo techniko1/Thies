@@ -77,7 +77,7 @@
                 Player = "X";
                 Game = ["", "", "", "", "", "", "", "", ""];
                 feld.forEach(feld => {
-                    show_change(feld);
+                    feld.innerText=""
                 });
                 isAktiv=true;
             }
@@ -108,7 +108,7 @@
 
             function änder_Feld(tile, index) {
                 if (!möglich(index)) {return;} 
-                else if (isAktiv) {
+                else if (!isAktiv) {
                     reset();
                     return;}
                 else Game[index] = Player
