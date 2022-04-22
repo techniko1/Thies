@@ -148,7 +148,8 @@
                 }
                 if (!möglich(index)) {return;} 
                 else Game[index] = Player
-                tile.classList.add("player${Player}");
+                let x = "player"+Player
+                tile.classList.add(x);
                 show_change(tile);
                 win();
                 next_player();
