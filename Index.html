@@ -1,0 +1,118 @@
+<html>
+
+<head>hello</head>
+
+<style>
+    .feld {
+        min-height: 100px;
+        min-width: 100px;
+        border: 3px solid rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 50px;
+        cursor: pointer;
+        font-size: 100px;
+    }
+    
+    .feld:hover {
+        background-color: rgb(107, 107, 107);
+    }
+    
+    .container {
+        margin: 1 auto;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 33% 33% 33%;
+        max-width: 300px;
+    }
+</style>
+
+<body>
+    <h1 id="h1">Hello</h1>
+    <section class="container">
+        <div class="feld"></div>
+        <div class="feld"></div>
+        <div class="feld"></div>
+        <div class="feld"></div>
+        <div class="feld"></div>
+        <div class="feld"></div>
+        <div class="feld"></div>
+        <div class="feld"></div>
+        <div class="feld"></div>
+    </section>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const feld = Array.from(document.querySelectorAll('.feld'));
+            let Player = "X";
+            Game = ["", "", "", "", "", "", "", "", ""];
+            win_condicones = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            function möglich(index) {
+                if (Game[index] != "") {
+                    return false
+                } else return true
+            }
+            const next_player = () => {
+                Player = Player === 'X' ? 'O' : 'X';
+            }
+
+            function show_change(tile) {
+                tile.innerText = Player;
+            }
+
+            function reset() {
+                let Player = "X";
+                Game = ["", "", "", "", "", "", "", "", ""];
+                feld.forEach(show_change(tile))
+            }
+
+            function win() {
+                let winner;
+                let Won = false;
+                for (let i = 0; i <= win_condicones.length - 1; i++) {
+                    const a = Game[win_condicones[i][0]];
+                    const b = Game[win_condicones[i][1]];
+                    const c = Game[win_condicones[i][2]];
+                    if (a === "" || b === "" || c === "") {
+                        continue;
+                    }
+                    if (a === b && b === c) {
+                        Won = true;
+                        winner = a;
+                        break;
+                    }
+                }
+                if (Won) {
+                    document.getElementById("h1").innerHTML ="Spieler "+ winner + " hat das Spiel Gewonnen";
+                } else if (!"" in Game) {
+                    document.getElementById("h1").innerHTML = "Unentschieden";
+                    reset()
+                }
+            }
+
+            function änder_Feld(tile, index) {
+                if (!möglich(index)) {
+                    return
+                } else Game[index] = Player
+                next_player();
+                show_change(tile);
+                win();
+            }
+            feld.forEach((tile, index) => tile.addEventListener('click', () => änder_Feld(tile, index)))
+        })
+    </script>
+</body>
+
+</html>
