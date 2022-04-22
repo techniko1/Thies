@@ -76,7 +76,7 @@
             function reset() {
                 let Player = "X";
                 Game = ["", "", "", "", "", "", "", "", ""];
-                feld.forEach(show_change(tile))
+                feld.forEach(tile => {show_change(tile);})
             }
 
             function win() {
