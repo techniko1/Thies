@@ -73,7 +73,7 @@
                 tile.innerText = Player;
             }
 
-            function reset() {
+            const reset =() => {
                 let Player = "X";
                 Game = ["", "", "", "", "", "", "", "", ""];
                 feld.forEach(tile => {show_change(tile);})
