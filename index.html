@@ -107,11 +107,11 @@
             }
 
             function änder_Feld(tile, index) {
-                if (!möglich(index)) {return;} 
-                else if (isAktiv==false) {
+                if (isAktiv==false) {
                     reset();
                     isAktiv=true;
                     return;}
+                if (!möglich(index)) {return;} 
                 else Game[index] = Player
                 show_change(tile);
                 win();
