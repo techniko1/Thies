@@ -45,7 +45,7 @@
 </style>
 
 <body>
-    <h1 id="h1" class="h1">Hello</h1>
+    <h1 id="h1" class="h1">Click the tiles below to play</h1>
     <section class="container">
         <div class="feld"></div>
         <div class="feld"></div>
@@ -90,6 +90,7 @@
 
             const reset =() => {
                 Player = "X";
+                h1.innerText = "Click the tiles below to play"
                 Game = ["", "", "", "", "", "", "", "", ""];
                 feld.forEach(feld => {
                     feld.innerText=""
