@@ -148,10 +148,10 @@
                 }
                 if (!möglich(index)) {return;} 
                 else Game[index] = Player;
-                tile.classList.add(Player);
                 show_change(tile);
                 win();
                 next_player();
+                tile.classList.add(Player);
             }
             feld.forEach((tile, index) => tile.addEventListener('click', () => änder_Feld(tile, index)))
         })
