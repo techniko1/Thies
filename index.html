@@ -23,7 +23,15 @@
     .feld:hover {
         background-color: rgba(255, 255, 255, 0.418);
     }
-    
+    .X {
+    color: blue;
+    }
+    .O {
+    color: green;
+    }
+
+
+
     .container {
         margin: 1 auto;
         display: grid;
@@ -99,7 +107,9 @@
                 h1.innerText = "Click the tiles below to play"
                 Game = ["", "", "", "", "", "", "", "", ""];
                 feld.forEach(feld => {
-                    feld.innerText=""
+                    feld.innerText="";
+                    feld.classList.remove("X");
+                    feld.classList.remove("O");
                 });
                 console.log("reset!")
             }
@@ -121,7 +131,7 @@
                 }
                 
                 if (Won) {
-                    document.getElementById("h1").innerHTML ="Spieler "+ Player + " hat das Spiel Gewonnen";
+                    document.getElementById("h1").innerHTML ="Spieler "+ Player + " hat das Spiel gewonnen";
                 } else if (!Game.includes("")) {
                     document.getElementById("h1").innerHTML = "Unentschieden";
                     isAktiv=false;
@@ -137,10 +147,11 @@
                     console.log("still not aktiv");
                 }
                 if (!möglich(index)) {return;} 
-                else Game[index] = Player
+                else Game[index] = Player;
                 show_change(tile);
                 win();
                 next_player();
+                tile.classList.add(Player);
             }
             feld.forEach((tile, index) => tile.addEventListener('click', () => änder_Feld(tile, index)))
         })
