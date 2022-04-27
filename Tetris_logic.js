@@ -18,6 +18,7 @@ function init() {
     document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
     document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
     document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
+    document.getElementById('Gameover').style.fontSize=window.innerHeight/8.651785714285714
 
     Texte = document.getElementById("Texte");
 
@@ -353,7 +354,7 @@ function on_Start() {
     document.getElementById('Fill').style.display= "block";
     document.getElementById('state').innerText="Tetris";
     document.getElementById('instruction').innerText="press Space to start";
-    document.getElementById('Gameover').innerText="Hightscore: "+read();;
+    document.getElementById('Gameover').innerText="Hightscore: "+read();
     Started=true;
     Gameover=false;
 }
@@ -364,6 +365,7 @@ function Start() {
     document.getElementById('Fill').style.display= "none";
     document.getElementById('state').innerText=""
     document.getElementById('instruction').innerText=""
+    document.getElementById('Gameover').innerText="";
     Started=false
     window.requestAnimationFrame(gameLoop);
 }
@@ -392,6 +394,7 @@ function rescale() {
     document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
     document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
     document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
+    document.getElementById('Gameover').style.fontSize=window.innerHeight/8.651785714285714
 
     Texte = document.getElementById("Texte");
 
@@ -473,6 +476,7 @@ function restart() {
     document.getElementById('Fill').style.display= "none";
     document.getElementById('state').innerText=""
     document.getElementById('instruction').innerText=""
+    document.getElementById('Gameover').innerText="";
     Gameover=false
     window.requestAnimationFrame(gameLoop);
 }
