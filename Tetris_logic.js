@@ -500,6 +500,9 @@ document.addEventListener("keydown",(e) => {
 document.addEventListener('swiped',(e) => {
     if (e.detail.dir === "up"){Store();}
     if (e.detail.dir === "down") {
+        if (!runter_gedrückt) {
+            runter_gedrückt=true;
+        }
         if (blocktime/fps>= 1/bps) {
             blocktime = 0;
                 Compleatly_down();
