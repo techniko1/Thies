@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    zoom: 98%;
   }
 
   canvas {
@@ -28,7 +29,7 @@
     align-items: flex-start;
   }
  
-  #overlay {
+  .overlay {
     position: fixed;
     display: none;
     width: 100%;
@@ -37,24 +38,79 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
   }
+  .overlay.Pause {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .overlay.fill {
+    background-color: rgb(0, 0, 0);
+  }
   #h1{
+    font-size: 700%;
+    color: rgb(255, 0, 0);
+        position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+  }
+  #Keys{
+    font-size: 400%;
+    color: rgb(38, 0, 255);
+      position: absolute;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    z-index: 4;
+  }
+  .text{
     font-size: 500%;
     color: white;
   }
-  
+  #Texte{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 50%;
+  }
+  #state{
+    font-size: 900%;
+    color: rgb(255, 0, 0);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+  }
+  #instruction{
+    font-size: 900%;
+    color: rgb(255, 0, 0);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+  }
 </style>
 
 <body id="body">
-  <div id="overlay"></div>
   <h1 id="h1"></h1>
+  <h1 id="state"></h1>
+  <h1 id="instruction"></h1>
+  <h4 id="Keys"></h4>
+  <div id="Pause" class="overlay Pause"></div>
+  <div id="Fill" class="overlay fill"></div>
     <div id="container" class="flex-container">
       <canvas width="120" height="120" id="Store"></canvas>
       <canvas width="500" height="1050" id="game"></canvas>
       <canvas width="120" height="420" id="next_Figurs"></canvas>
-    </div>
+   </div>
+      <div id="Texte">
+        <div id="Punkte" class="text">Punkte</div>
+        <div id="Level" class="text">Level</div>
+      </div>
   <script type="text/javascript" src="Tetris_logic.js"></script>
 </body>
 
