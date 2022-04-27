@@ -16,7 +16,7 @@ function init() {
 
     document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
     document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
-    document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('instruction').style.fontSize=window.innerHeight/11.4
     document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
     document.getElementById('Gameover').style.fontSize=window.innerHeight/8.651785714285714
 
@@ -348,7 +348,7 @@ let rAF = null;
 function on_Start() {
     document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
     document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
-    document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('instruction').style.fontSize=window.innerHeight/11.4
     document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
     
     document.getElementById('Fill').style.display= "block";
@@ -392,7 +392,7 @@ function can_down() {
 function rescale() {
     document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
     document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
-    document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('instruction').style.fontSize=window.innerHeight/11.4
     document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
     document.getElementById('Gameover').style.fontSize=window.innerHeight/8.651785714285714
 
