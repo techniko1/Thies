@@ -239,10 +239,10 @@ function CheckLayer() {
     }});
     glines += lines
     if (lines == 0) Points +=0;
-    if (lines == 1) Points +=100*bfps;
-    if (lines == 2) Points +=300*bfps;
-    if (lines == 3) Points +=500*bfps;
-    if (lines == 4) Points +=800*bfps;
+    if (lines == 1) Points +=(100*bfps);
+    if (lines == 2) Points +=(300*bfps);
+    if (lines == 3) Points +=(500*bfps);
+    if (lines == 4) Points +=(800*bfps);
     CheckLevel();
 }
 function Store() {
@@ -353,6 +353,7 @@ function on_Start() {
     document.getElementById('Fill').style.display= "block";
     document.getElementById('state').innerText="Tetris";
     document.getElementById('instruction').innerText="press Space to start";
+    document.getElementById('Gameover').innerText="Hightscore: "+read();;
     Started=true;
     Gameover=false;
 }
@@ -375,8 +376,9 @@ function do_Gameover() {
         write(String(Hightscore));
     }
     document.getElementById('Fill').style.display= "block";
-    document.getElementById('state').innerText="Tetris"
-    document.getElementById('instruction').innerText="press Space to restart"
+    document.getElementById('state').innerText="Gameover";
+    document.getElementById('instruction').innerText="press Space to restart";
+    document.getElementById('Gameover').innerText="Hightscore: "+Hightscore;
 }
 function can_down() {
     let possi
