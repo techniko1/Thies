@@ -424,8 +424,8 @@ function Compleatly_down() {
 }
 let B_pressed = false
 function pause() {
-    if (!Gameover) return false
-    if (!Started) return false
+    if (Gameover) return false
+    if (Started) return false
     if (rAF!==null) {
         if (B_pressed===false) {
             window.cancelAnimationFrame(rAF);
