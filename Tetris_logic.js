@@ -506,7 +506,10 @@ document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
 document.addEventListener("swiped",(e) => {
-
+    document.getElementById('Fill').style.display= "none";
+    document.getElementById('state').innerText=""
+    document.getElementById('instruction').innerText=""
+    document.getElementById('Gameover').innerText="";
 })
 document.addEventListener("keyup",(e) => {
     if (e.code === "ArrowDown") runter_gedrückt =false;
