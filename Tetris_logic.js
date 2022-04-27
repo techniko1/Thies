@@ -77,8 +77,9 @@ Tetreminos =[
         this.Hologramm = new Hologramm(this)
     }
     rotate(direction) {
-        if (direction) this.rotation = (this.rotation +1)% this.Tetreminos[this.type].length;
-        else {this.rotation = Math.abs((this.rotation -1)% this.Tetreminos[this.type].length);}
+        if (direction) this.rotation = Math.abs((this.rotation +1)% 4);
+        else {this.rotation = Math.abs((this.rotation -1)%4)}; 
+        console.log(Math.abs((this.rotation -1)%4),this.rotation -1%4,this.rotation -1)
     }
     get pos(){return this.Tetreminos[this.type][this.rotation];
     }
@@ -497,16 +498,16 @@ document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
 document.addEventListener('swiped',(e) => {
-    if (e.dir === "up"){Store();}
-    if (e.dir === "down") {
+    if (e.detail.dir === "up"){Store();}
+    if (e.detail.dir === "down") {
         if (blocktime/fps>= 1/bps) {
             blocktime = 0;
                 Compleatly_down();
         }
             dd=performance.now();
         } //console.log(runter_gedrückt=true);
-    if (e.dir === "left") {Left();}
-    if (e.dir === "right") {Right();}
+    if (e.detail.dir === "left") {Left();}
+    if (e.detail.dir === "right") {Right();}
 })
 document.addEventListener("keyup",(e) => {
     if (e.code === "ArrowDown") runter_gedrückt =false;
