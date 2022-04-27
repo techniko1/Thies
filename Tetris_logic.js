@@ -14,6 +14,11 @@ function init() {
     Store_canvas = document.getElementById('Store');
     Store_context = Store_canvas.getContext('2d');
 
+    document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
+    document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
+
     Texte = document.getElementById("Texte");
 
     canvas.height=window.innerHeight
@@ -340,6 +345,11 @@ let times=[];
 let fps;
 let rAF = null;
 function on_Start() {
+    document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
+    document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
+    
     document.getElementById('Fill').style.display= "block";
     document.getElementById('state').innerText="Tetris";
     document.getElementById('instruction').innerText="press Space to start";
@@ -376,6 +386,13 @@ function can_down() {
     return possi;
 }
 function rescale() {
+    document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
+    document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('instruction').style.fontSize=window.innerHeight/6.729166666666667
+    document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
+
+    Texte = document.getElementById("Texte");
+
     canvas.height=window.innerHeight
     canvas.width=(window.innerHeight/2.1)
 
@@ -405,6 +422,8 @@ function Compleatly_down() {
 }
 let B_pressed = false
 function pause() {
+    if (!Gameover) return false
+    if (!Started) return false
     if (rAF!==null) {
         if (B_pressed===false) {
             window.cancelAnimationFrame(rAF);
