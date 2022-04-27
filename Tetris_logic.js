@@ -505,6 +505,9 @@ function gameLoop(timeStamp) {
 document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
+document.addEventListener("swiped",(e) => {
+
+})
 document.addEventListener("keyup",(e) => {
     if (e.code === "ArrowDown") runter_gedrückt =false;
     if (e.code === "ArrowLeft") links_gedrückt =false;
