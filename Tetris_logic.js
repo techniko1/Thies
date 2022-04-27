@@ -14,27 +14,8 @@ function init() {
     Store_canvas = document.getElementById('Store');
     Store_context = Store_canvas.getContext('2d');
 
-    document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
-    document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
-    document.getElementById('instruction').style.fontSize=window.innerHeight/11.4
-    document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
-    document.getElementById('Gameover').style.fontSize=window.innerHeight/8.651785714285714
-
-    Texte = document.getElementById("Texte");
-
-    canvas.height=window.innerHeight
-    canvas.width=(window.innerHeight/2.1)
-
     window.Rect_größe = Math.floor(canvas.height/21);
     window.draw_Rect_größe = Math.floor(canvas.height/30);
-
-    next_Figurs_canvas.height=draw_Rect_größe*14
-    next_Figurs_canvas.width=draw_Rect_größe*4
-
-    Store_canvas.height=draw_Rect_größe*4
-    Store_canvas.width=draw_Rect_größe*4
-
-    Texte.style.left=next_Figurs_canvas.getBoundingClientRect().left;
 
     Colors  = [
         "rgb(0, 240, 240)",//   Türkis  I
@@ -346,11 +327,7 @@ let times=[];
 let fps;
 let rAF = null;
 function on_Start() {
-    document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
-    document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
-    document.getElementById('instruction').style.fontSize=window.innerHeight/11.4
-    document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
-    
+    rescale();
     document.getElementById('Fill').style.display= "block";
     document.getElementById('state').innerText="Tetris";
     document.getElementById('instruction').innerText="press Space to start";
@@ -390,11 +367,24 @@ function can_down() {
     return possi;
 }
 function rescale() {
+
+    canvas = document.getElementById('game');
+    context = canvas.getContext('2d');
+
+    next_Figurs_canvas = document.getElementById('next_Figurs');
+    next_Figurs_context = next_Figurs_canvas.getContext('2d');
+
+    Store_canvas = document.getElementById('Store');
+    Store_context = Store_canvas.getContext('2d');
+
     document.getElementById('h1').style.fontSize=window.innerHeight/8.651785714285714
     document.getElementById('state').style.fontSize=window.innerHeight/6.729166666666667
     document.getElementById('instruction').style.fontSize=window.innerHeight/11.4
     document.getElementById('Keys').style.fontSize=window.innerHeight/15.140625
     document.getElementById('Gameover').style.fontSize=window.innerHeight/8.651785714285714
+
+    document.getElementById('Img').height=window.innerHeight/20
+    document.getElementById('Img').width=window.innerHeight/20
 
     Texte = document.getElementById("Texte");
 
@@ -411,6 +401,7 @@ function rescale() {
     Store_canvas.width=draw_Rect_größe*4
 
     Texte.style.left=next_Figurs_canvas.getBoundingClientRect().left;
+   Texte.style.left=next_Figurs_canvas.getBoundingClientRect().left;
 }
 function Compleatly_down() {    
     while (can_down()) {
@@ -505,11 +496,17 @@ function gameLoop(timeStamp) {
 document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
-document.addEventListener('swiped-left',(e) => {
-    document.getElementById('Fill').style.display= "none";
-    document.getElementById('state').innerText=""
-    document.getElementById('instruction').innerText=""
-    document.getElementById('Gameover').innerText="";
+document.addEventListener('swiped',(e) => {
+    if (e.dir === "up"){Store();}
+    if (e.dir === "down") {
+        if (blocktime/fps>= 1/bps) {
+            blocktime = 0;
+                Compleatly_down();
+        }
+            dd=performance.now();
+        } //console.log(runter_gedrückt=true);
+    if (e.dir === "left") {Left();}
+    if (e.dir === "right") {Right();}
 })
 document.addEventListener("keyup",(e) => {
     if (e.code === "ArrowDown") runter_gedrückt =false;
