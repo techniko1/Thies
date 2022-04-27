@@ -505,7 +505,7 @@ function gameLoop(timeStamp) {
 document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
-document.addEventListener("swiped",(e) => {
+document.addEventListener('swiped-left',(e) => {
     document.getElementById('Fill').style.display= "none";
     document.getElementById('state').innerText=""
     document.getElementById('instruction').innerText=""
