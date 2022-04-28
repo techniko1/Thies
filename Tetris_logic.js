@@ -402,7 +402,6 @@ function rescale() {
     Store_canvas.width=draw_Rect_größe*4
 
     Texte.style.left=next_Figurs_canvas.getBoundingClientRect().left;
-   Texte.style.left=next_Figurs_canvas.getBoundingClientRect().left;
 }
 function Compleatly_down() {    
     while (can_down()) {
@@ -440,7 +439,6 @@ function pause() {
 }
 
 function key_down_events(e){
-    console.log(e.code)
     if (e.code=== "Escape") pause();
     if (e.code === "ArrowUp"){Store();}
     if (e.code === "KeyA"){rotate(false);}
@@ -497,6 +495,7 @@ function gameLoop(timeStamp) {
 document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
+let x_old;
 document.addEventListener('swiped',(e) => {
     if (e.detail.dir === "up"){Store();}
     if (e.detail.dir === "down") {
@@ -509,8 +508,10 @@ document.addEventListener('swiped',(e) => {
         }
             dd=performance.now();
         } //console.log(runter_gedrückt=true);
-    if (e.detail.dir === "left") {Left();}
-    if (e.detail.dir === "right") {Right();}
+
+        x_old=new_Figur.x;
+        new_Figur.x=e.detail.xEnd/window.innerWidth;
+    if (!Possible()) {new_Figur.x=x_old;}
 })
 document.addEventListener("keyup",(e) => {
     if (e.code === "ArrowDown") runter_gedrückt =false;
