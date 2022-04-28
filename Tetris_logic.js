@@ -495,27 +495,26 @@ function gameLoop(timeStamp) {
 document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
-let x_old;
+
 document.addEventListener('swiped',(e) => {
     if (e.detail.dir === "up"){Store();}
     if (e.detail.dir === "down") {
-        if (!runter_gedrückt) {
-            runter_gedrückt=true;
-        }
         if (blocktime/fps>= 1/bps) {
             blocktime = 0;
                 Compleatly_down();
         }
             dd=performance.now();
         } //console.log(runter_gedrückt=true);
-
-        x_old=new_Figur.x;
-        new_Figur.x=e.detail.xEnd/window.innerWidth;
-        console.log(e.detail.xEnd);
-    if (!Possible()) {new_Figur.x=x_old;}
 })
 document.addEventListener("keyup",(e) => {
     if (e.code === "ArrowDown") runter_gedrückt =false;
     if (e.code === "ArrowLeft") links_gedrückt =false;
     if (e.code === "ArrowRight") rechts_gedrückt =false;
 })
+
+document.addEventListener("dragover", function(e){
+    e = e || window.event;
+    var dragX = e.pageX, dragY = e.pageY;
+
+    console.log("X: "+dragX+" Y: "+dragY);
+}, false);
