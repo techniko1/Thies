@@ -78,8 +78,7 @@ Tetreminos =[
     }
     rotate(direction) {
         if (direction) this.rotation = (this.rotation -1)-(4*Math.floor((this.rotation -1) / 4));
-        else {this.rotation = (this.rotation -1)-(4*Math.floor((this.rotation -1) / 4))}; 
-        console.log((this.rotation -1)-(4*Math.floor((this.rotation -1) / 4)));
+        else {this.rotation = (this.rotation -1)-(4*Math.floor((this.rotation -1) / 4))};
     }
     get pos(){return this.Tetreminos[this.type][this.rotation];
     }
@@ -403,7 +402,9 @@ function rescale() {
 
     Texte.style.left=next_Figurs_canvas.getBoundingClientRect().left;
 }
-function Compleatly_down() {    
+let going_down;
+function Compleatly_down() {
+    going_down=true;
     while (can_down()) {
         down(true);
     }
@@ -415,6 +416,7 @@ function Compleatly_down() {
     }}
     next_Figure();
     CheckLayer();
+    going_down=false;
 }
 let B_pressed = false
 function pause() {
@@ -496,25 +498,68 @@ document.addEventListener("keydown",(e) => {
     key_down_events(e);
 })
 
-document.addEventListener('swiped',(e) => {
-    if (e.detail.dir === "up"){Store();}
-    if (e.detail.dir === "down") {
-        if (blocktime/fps>= 1/bps) {
-            blocktime = 0;
-                Compleatly_down();
-        }
-            dd=performance.now();
-        } //console.log(runter_gedrückt=true);
-})
+// document.addEventListener('swiped',(e) => {
+//     if (e.detail.dir === "up"){Store();}
+//     if (e.detail.dir === "down") {
+//         if (blocktime/fps>= 1/bps) {
+//             blocktime = 0;
+//                 Compleatly_down();
+//         }
+//             dd=performance.now();
+//         } //console.log(runter_gedrückt=true);
+// })
 document.addEventListener("keyup",(e) => {
     if (e.code === "ArrowDown") runter_gedrückt =false;
     if (e.code === "ArrowLeft") links_gedrückt =false;
     if (e.code === "ArrowRight") rechts_gedrückt =false;
 })
+var x = null;
+var y = null;
 
-document.addEventListener("dragover", function(e){
-    e = e || window.event;
-    var dragX = e.pageX, dragY = e.pageY;
 
-    console.log("X: "+dragX+" Y: "+dragY);
-}, false);
+let x_start;
+let y_start;
+let time_start;
+let Block_start;
+let down_holded=false;
+document.addEventListener('pointermove', onMouseUpdate, false);
+document.addEventListener('pointerenter', onMouseStart, false);
+document.addEventListener('pointerup',let_go, false);
+function let_go(e) {
+    down_holded=false
+}
+function onMouseStart(e) {
+    if (typeof new_Figur!=="undefined") {
+    x_start=e.pageX;
+    y_start=e.pageY;
+    time_start=performance.now();
+    Block_start=new_Figur.x;
+}}
+function onMouseUpdate(e) {if (typeof new_Figur!=="undefined") {
+    x = e.pageX;
+    y = e.pageY;
+    xDiff = x_start - x;
+    yDiff = y_start - y;
+    if (!down_holded) {
+        console.log(yDiff)
+       if (Math.abs(xDiff) < Math.abs(yDiff)) {
+        
+        if (yDiff < -2){
+                Compleatly_down();
+                down_holded=true
+        } else if (yDiff > 2){Store();
+            down_holded=true}
+        
+    }
+       }
+    if (!going_down) {
+    if (x>canvas.getBoundingClientRect().left&&x<canvas.getBoundingClientRect().right) {
+      
+    let Block_x = Math.round((x-canvas.getBoundingClientRect().left)/canvas.height*20)-1
+    let old_x=new_Figur.x;
+    new_Figur.x=Block_x;
+    if (!Possible()) {new_Figur.x=old_x;}
+  }}
+
+}}
+
