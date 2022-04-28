@@ -77,9 +77,9 @@ Tetreminos =[
         this.Hologramm = new Hologramm(this)
     }
     rotate(direction) {
-        if (direction) this.rotation = Math.abs((this.rotation +1)% 4);
-        else {this.rotation = Math.abs((this.rotation -1)%4)}; 
-        console.log(Math.abs((this.rotation -1)%4),this.rotation -1%4,this.rotation -1)
+        if (direction) this.rotation = (this.rotation -1)-(4*Math.floor((this.rotation -1) / 4));
+        else {this.rotation = (this.rotation -1)-(4*Math.floor((this.rotation -1) / 4))}; 
+        console.log((this.rotation -1)-(4*Math.floor((this.rotation -1) / 4)));
     }
     get pos(){return this.Tetreminos[this.type][this.rotation];
     }
