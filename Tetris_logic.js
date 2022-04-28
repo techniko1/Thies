@@ -511,6 +511,7 @@ document.addEventListener('swiped',(e) => {
 
         x_old=new_Figur.x;
         new_Figur.x=e.detail.xEnd/window.innerWidth;
+        console.log(e.detail.xEnd);
     if (!Possible()) {new_Figur.x=x_old;}
 })
 document.addEventListener("keyup",(e) => {
