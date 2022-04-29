@@ -77,7 +77,7 @@ Tetreminos =[
         this.Hologramm = new Hologramm(this)
     }
     rotate(direction) {
-        if (direction) this.rotation = (this.rotation +1)-(4*Math.floor((this.rotation -1) / 4));
+        if (direction) this.rotation = (this.rotation +1)-(4*Math.floor((this.rotation +1) / 4));
         else {this.rotation = (this.rotation -1)-(4*Math.floor((this.rotation -1) / 4))};
     }
     get pos(){return this.Tetreminos[this.type][this.rotation];
@@ -515,51 +515,3 @@ document.addEventListener("keyup",(e) => {
 })
 var x = null;
 var y = null;
-
-
-let x_start;
-let y_start;
-let time_start;
-let Block_start;
-let down_holded=false;
-document.addEventListener('pointermove', onMouseUpdate, false);
-document.addEventListener('pointerenter', onMouseStart, false);
-document.addEventListener('pointerup',let_go, false);
-function let_go(e) {
-    down_holded=false
-}
-function onMouseStart(e) {
-    if (typeof new_Figur!=="undefined") {
-    x_start=e.pageX;
-    y_start=e.pageY;
-    time_start=performance.now();
-    Block_start=new_Figur.x;
-}}
-function onMouseUpdate(e) {if (typeof new_Figur!=="undefined") {
-    x = e.pageX;
-    y = e.pageY;
-    xDiff = x_start - x;
-    yDiff = y_start - y;
-    if (!down_holded) {
-        console.log(yDiff)
-       if (Math.abs(xDiff) < Math.abs(yDiff)) {
-        
-        if (yDiff < -2){
-                Compleatly_down();
-                down_holded=true
-        } else if (yDiff > 2){Store();
-            down_holded=true}
-        
-    }
-       }
-    if (!going_down) {
-    if (x>canvas.getBoundingClientRect().left&&x<canvas.getBoundingClientRect().right) {
-      
-    let Block_x = Math.round((x-canvas.getBoundingClientRect().left)/canvas.height*20)-1
-    let old_x=new_Figur.x;
-    new_Figur.x=Block_x;
-    if (!Possible()) {new_Figur.x=old_x;}
-  }}
-
-}}
-
