@@ -258,7 +258,7 @@ function rotate(direction) {
     }}}}}
 
 function CheckLevel(){
-    bfps = Math.round((glines+10)/10);
+    bfps = Math.floor((glines+10)/10);
     bps = 9+bfps;
 }
 function read() {
